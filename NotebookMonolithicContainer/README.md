@@ -8,15 +8,50 @@ This project provides a minimal React template with a clean, modern UI and minim
 - **Modern UI**: Clean, responsive design with KAVIA brand styling
 - **Fast**: Minimal dependencies for quick loading times
 - **Simple**: Easy to understand and modify
-
 ## Getting Started
 
-In the project directory, you can run:
+### Environment Variables
 
-### `npm start`
+#### For the Frontend (React):
+- `REACT_APP_API_URL` (default: `http://localhost:4001`)
+  - URL that the frontend uses for all API calls.
+  - Example: export REACT_APP_API_URL=http://localhost:4001
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### For the Backend (Express.js):
+- `NOTEBOOK_BACKEND_PORT` (default: 4001)
+  - Port the Express backend uses.
+  - Example: export NOTEBOOK_BACKEND_PORT=4001
+
+### Running Local Development
+
+1. **Start the backend (API + DB):**
+   ```bash
+   cd NotebookMonolithicContainer/backend
+   npm install
+   npm start
+   ```
+   - The backend will listen on port `4001` by default (or as set by `NOTEBOOK_BACKEND_PORT`).
+
+2. **Start the frontend:**
+   ```bash
+   cd ..
+   npm install
+   npm start
+   ```
+   - The React app runs on port `3000` by default.
+   - Set `REACT_APP_API_URL` in your environment before running if backend URL/port differs.
+
+   **Tip:** When running backend and frontend separately in local dev, you can set up a proxy (see below).
+
+### Local Proxy Setup (optional, for easier dev)
+
+For local development, you can add the following to your `NotebookMonolithicContainer/package.json` for easier API calls without CORS:
+
+```json
+  "proxy": "http://localhost:4001",
+```
+
+This allows the React app on port 3000 to automatically proxy `/api/*` to the backend on 4001.
 
 ### `npm test`
 

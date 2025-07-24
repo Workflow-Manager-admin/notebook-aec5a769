@@ -3,15 +3,42 @@
 // All frontend code uses these functions for backend communication
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4001';
 
-// Helper for fetch requests
+/**
+ * Helper for fetch requests.
+ * Adds extra diagnostics for common network failures.
+ */
 async function apiFetch(path, opts = {}) {
-  let res = await fetch(API_URL + path, {
-    headers: { 'Content-Type': 'application/json' },
-    ...opts,
-    body: opts.body ? JSON.stringify(opts.body) : undefined,
-  });
-  if (!res.ok) throw new Error((await res.json())?.error || res.statusText);
-  return res.json();
+  try {
+    let res = await fetch(API_URL + path, {
+      headers: { 'Content-Type': 'application/json' },
+      ...opts,
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+    });
+    if (!res.ok) {
+      let err = "";
+      try {
+        err = (await res.json())?.error;
+      } catch {
+        err = res.statusText;
+      }
+      throw new Error(err || `API error: ${res.status}`);
+    }
+    return res.json();
+  } catch (e) {
+    // Provide diagnostic hints for network/CORS errors
+    if (e instanceof TypeError && e.message.match(/Failed to fetch/i)) {
+      throw new Error(
+        `Network error: Unable to reach API at "${API_URL}".\nDebug Suggestions:\n` +
+        "- Make sure the backend server is running and accessible.\n" +
+        "- Ensure CORS is enabled on your backend, especially for http://localhost:3000.\n" +
+        "- Check that REACT_APP_API_URL matches your backend URL (current: " + API_URL + ").\n" +
+        "- If running in dev, set up a proxy in package.json to avoid CORS issues.\n" +
+        "- Inspect browser DevTools > Network console for more details.\n" +
+        `Underlying error: ${e instanceof Error ? e.message : String(e)}`
+      );
+    }
+    throw e;
+  }
 }
 
 // --- Notes API ---

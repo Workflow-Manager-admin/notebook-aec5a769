@@ -15,7 +15,8 @@ const PORT = process.env.NOTEBOOK_BACKEND_PORT || 4001;
 
 let db;
 const app = express();
-app.use(cors());
+// CORS: Only allow CORS for /api/* endpoints for safety
+app.use('/api', cors());
 app.use(bodyParser.json());
 
 // Folder/category schema: id, name, created_at
@@ -360,6 +361,8 @@ if (process.env.NODE_ENV === 'production' && fs.stat(frontendBuild).catch(() => 
 initDb().then(() => {
   app.listen(PORT, () => {
     console.log(`Notebook backend listening on port ${PORT}`);
+    console.log(`API base URL: http://localhost:${PORT}/api`);
+    console.log('Set NOTEBOOK_BACKEND_PORT to change backend port if needed.');
   });
 }).catch((e) => {
   console.error('Could not initialize DB', e);
