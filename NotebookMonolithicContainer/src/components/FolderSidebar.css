@@ -1,0 +1,55 @@
+.folder-sidebar {
+  min-width: 200px;
+  max-width: 260px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: 1rem 0.7rem;
+  height: 100vh;
+}
+.folders-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2em 0;
+}
+.folders-list li {
+  padding: 8px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  position: relative;
+  font-size: 1.07em;
+  display: flex;
+  align-items: center;
+}
+.folders-list li.active, .folders-list li:focus {
+  background: #f9e2ea;
+  font-weight: bold;
+  outline: 2px solid #c95b9c;
+}
+.add-folder-btn, .add-folder-form button {
+  margin-top: 0.6em;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 0.25em 0.8em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-folder-form input[type="text"] {
+  width: 80%;
+  padding: 6px;
+  margin-right: 2px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+.delete-folder-btn {
+  margin-left: auto;
+  color: #ce4257;
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}

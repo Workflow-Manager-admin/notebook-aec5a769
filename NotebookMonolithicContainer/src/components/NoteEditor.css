@@ -1,0 +1,64 @@
+.note-editor {
+  margin: 1rem auto;
+  max-width: 700px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.note-editor input[type="text"] {
+  width: 100%;
+  padding: 0.5em 1em;
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.editor-toolbar {
+  margin: 0.5em 0;
+  display: flex;
+  gap: 0.5em;
+}
+.editor-toolbar button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 3px;
+  padding: 0.2em 0.7em;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+}
+.editor-content {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  min-height: 150px;
+  font-size: 1.1em;
+  padding: 1em;
+  margin: 1em 0;
+  background: #fff;
+  color: #333;
+  transition: background 0.2s;
+}
+.note-actions {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 0.5em;
+}
+.btn-save {
+  background: #00b16a;
+}
+.btn-delete {
+  background: #e05656;
+}
+.note-metadata {
+  margin-top: 0.5em;
+  color: #9858b1;
+  font-size: 0.95em;
+}
