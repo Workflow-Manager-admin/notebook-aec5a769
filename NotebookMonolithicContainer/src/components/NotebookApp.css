@@ -1,0 +1,240 @@
+/* Styles for the notebook app (sidebar, appbar, main area, mobile responsiveness) */
+.notebook-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-secondary);
+  padding: 10px 1.2em 6px 1.2em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-title {
+  font-size: 1.7em;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-weight: 900;
+  color: var(--text-secondary);
+}
+
+.topbar nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.notebook-body {
+  display: flex;
+  flex: 1;
+  min-height: 350px;
+  background: var(--bg-primary);
+}
+
+.sidebar {
+  width: 255px;
+  padding: 1em 0.6em;
+  border-right: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar .folders {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding: 0;
+  list-style: none;
+}
+.sidebar .folders li {
+  padding: 0.5em;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 0.08em 0;
+  display: flex;
+  align-items: center;
+  background: none;
+}
+.sidebar .folders li.active,
+.sidebar .folders li:focus-visible {
+  background: rgba(110,180,220,0.12);
+  font-weight: bold;
+}
+.sidebar .folders .delete-folder-btn {
+  background: none;
+  border: none;
+  margin-left: auto;
+  color: #b33;
+  font-size: 1em;
+  cursor: pointer;
+}
+.sidebar .notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .notes li {
+  padding: 0.45em 0.2em;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.sidebar .notes li.active {
+  background: var(--bg-primary);
+  font-weight: bold;
+}
+.note-list-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 1.2em;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+}
+.editor {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(60,60,70,0.05);
+  padding: 2em 1.5em 1.3em 1.5em;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  margin-bottom: 0.3em;
+}
+
+.editor-title {
+  font-size: 1.3em;
+  border-radius: 7px;
+  border: 1px solid var(--border-color);
+  padding: 5px 11px;
+  flex: 1;
+  margin-right: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: bold;
+}
+.editor select {
+  margin-right: 8px;
+  border-radius: 5px;
+  padding: 4px 7px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: 6px 16px;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background 0.2s;
+  margin-left: 4px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #212888;
+}
+.btn-danger {
+  background: #a5292a;
+}
+.btn-success {
+  background: #329c5e;
+}
+.btn-small {
+  font-size: 0.9em;
+  background: #555;
+  color: #fff;
+  padding: 3px 9px;
+  margin-left: 6px;
+}
+.footer-bar {
+  padding: 9px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.92em;
+  color: var(--text-secondary);
+}
+@media (max-width: 700px) {
+  .sidebar {
+    width: 110px;
+    font-size: 0.96em;
+    padding: 0.25em 0.1em;
+  }
+  .main-panel {
+    padding: 0.5em;
+  }
+  .editor {
+    padding: 1em 0.4em;
+    border-radius: 7px;
+  }
+  .editor-title {
+    font-size: 1em;
+    padding: 3px 5px;
+  }
+}
+@media (max-width: 410px) {
+  .topbar {
+    flex-direction: column;
+    gap: 0.08em;
+  }
+  .sidebar {
+    width: 66px;
+  }
+}
+.notification-panel, .settings-panel {
+  position: fixed;
+  top: 2.1em;
+  right: 1.1em;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(41,41,51,0.09);
+  max-width: 340px;
+  width: 98vw;
+  border: 1.5px solid var(--border-color);
+  z-index: 10;
+  padding: 1.1em;
+}
+.notification-panel h4,
+.settings-panel h4 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.04em;
+}
+
+.versions-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.versions-list li {
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.37em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

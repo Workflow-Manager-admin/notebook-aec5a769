@@ -1,0 +1,40 @@
+/* Simple styles for RichTextEditor, accessible and responsive */
+.rte {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.rte-toolbar {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 0.3em;
+}
+
+.rte-btn {
+  font-size: 1.08em;
+  font-weight: bold;
+  padding: 3px 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.rte-btn:focus-visible {
+  outline: 2px solid var(--text-secondary);
+  z-index: 2;
+}
+.rte-btn:active {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+.rte-content {
+  border: 1px solid var(--border-color);
+  min-height: 100px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 7px;
+  color: var(--text-primary);
+}
